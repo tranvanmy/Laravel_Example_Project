@@ -4,7 +4,7 @@
 /public/dist
 /public/css
 /public/fonts
-/public/js
+/public/common_js
 /storage/*.key
 /vendor
 .env
