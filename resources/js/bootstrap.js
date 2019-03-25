@@ -1,3 +1,10 @@
+import Vue from 'vue';
+import axios from 'axios';
+
+window.Vue = require('vue');
+window.axios = require('axios');
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window._ = require('lodash');
 

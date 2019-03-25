@@ -25,5 +25,6 @@ mix.styles([
 mix.js([
 	'resources/js/bootstrap.js',
   	'node_modules/jquery/dist/jquery.min.js',
-  	'node_modules/admin-lte/dist/js/demo.js'
-], 'public/js/admin/admin.js');
+  	'node_modules/admin-lte/dist/js/demo.js',
+  	'node_modules/axios/dist/axios.min.js',
+], 'public/common_js/admin/admin.js');
