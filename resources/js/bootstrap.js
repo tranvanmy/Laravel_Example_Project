@@ -3,6 +3,8 @@ import axios from 'axios';
 
 window.Vue = require('vue');
 window.axios = require('axios');
+window.dt = require( 'datatables.net');
+// window.$('#table_id').DataTable();
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

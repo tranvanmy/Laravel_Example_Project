@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "admin-lte": "^2.4.10",
         "bootstrap": "^3.3.7",
         "bootstrap-colorpicker": "^2.5.1",
         "bootstrap-datepicker": "^1.7.0",
@@ -32,7 +33,7 @@
         "bootstrap-timepicker": "^0.5.2",
         "chart.js": "1.0.*",
         "ckeditor": "^4.7.0",
-        "datatables.net": "^1.10.15",
+        "datatables.net": "^1.10.19",
         "datatables.net-bs": "^1.10.15",
         "fastclick": "^1.0.6",
         "flot": "^0.8.0-alpha",
@@ -51,7 +52,6 @@
         "pace": "0.0.4",
         "raphael": "^2.2.7",
         "select2": "^4.0.3",
-        "slimscroll": "^0.9.1",
-        "admin-lte": "^2.4.10"
+        "slimscroll": "^0.9.1"
     }
 }

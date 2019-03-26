@@ -1,11 +1,7 @@
 var formUser = new Vue({
-    el: '#create_user',
+    el: '#list_user',
     data: {
-        user: {
-            'name': null,
-            'email': null
-        },
-        formErrors: null
+        users: null
     },
 
     computed: {
@@ -17,23 +13,22 @@ var formUser = new Vue({
     },
 
     created: function () {
+        this.getUsers();
     },
 
     methods: {
-        createUser() {
+        getUsers() {
             var self = this;
             var authOptions = {
-                method: 'POST',
+                method: 'GET',
                 url: '/admin/user',
-                params: this.user,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 json: true
             }
             axios(authOptions).then((response) => {
-                self.formErrors = null;
-                console.log('success', self.formErrors);
+                self.users = response.data;
             }).catch((error) => {
                 self.formErrors = error.response.data.errors;
             });
