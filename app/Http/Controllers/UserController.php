@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
@@ -12,10 +13,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd(1);
-        // return view('admin/modules/user/create');
+
+        if ($request->ajax()) {
+            $userList = User::get();
+
+            return response()->json($userList);
+        }
+
+        return view('admin/modules/user/list');
     }
 
     /**

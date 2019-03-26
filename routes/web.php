@@ -19,5 +19,7 @@ Route::get('/admin', function () {
     return view('admin/modules/dashboard');
 });
 
-Route::resource('/admin/user', 'UserController');
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+	Route::resource('/user', 'UserController');
+});
