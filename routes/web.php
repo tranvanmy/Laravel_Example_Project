@@ -20,6 +20,6 @@ Route::get('/admin', function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
 	Route::resource('/user', 'UserController');
 });
