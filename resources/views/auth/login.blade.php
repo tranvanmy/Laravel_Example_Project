@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="login-box">
+<div class="login-box" id="login-form">
         <div class="login-logo">
             <b>Training</b> Project
         </div>
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            <form>
-                <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="Email">
+            <p class="login-box-msg" :class="{'error-login': userNotFound}">@{{ userNotFound ? userNotFound : 'Sign in to start your session' }}</p>
+            <form role="form" @submit.prevent='handleLogin'>
+                <div class="form-group has-feedback" v-bind:class="{ 'has-error': formErrors && formErrors.email }">
+                    <input type="email" class="form-control" v-model="user.email" id="email" placeholder="Email">
+                    <span  v-if="formErrors && formErrors.email" class="help-block">@{{ formErrors.email[0] }}</span>
                 </div>
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password">
+                <div class="form-group has-feedback" v-bind:class="{ 'has-error': formErrors && formErrors.password }">
+                    <input type="password" class="form-control" v-model="user.password" placeholder="Password">
+                    <span  v-if="formErrors && formErrors.password" class="help-block">@{{ formErrors.password[0] }}</span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
@@ -34,3 +36,13 @@
         </div>
     </div>
 @endsection
+@section('script')
+<script src="{{ asset('/js/sites/auth/login.js') }}"></script>
+@endsection
+
+<style>
+    .error-login {
+        font-size: 20px;
+        color:red;
+    }
+</style>

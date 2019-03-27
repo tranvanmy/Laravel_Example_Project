@@ -21,10 +21,11 @@ class UsersTableSeeder extends Seeder
         //     'avatar' => 'https://www.w3schools.com/csS/paris.jpg'
         // ]);
          DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
-            'avatar' => 'https://www.w3schools.com/csS/paris.jpg'
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'avatar' => 'https://www.w3schools.com/csS/paris.jpg',
+            'role' => config('setting.admin') || 1
         ]);
 
     }

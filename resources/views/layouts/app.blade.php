@@ -11,5 +11,6 @@
 <body class="hold-transition login-page">
     @yield('content')
 </body>
-<script src="{{ mix('/common_js/admin/admin.js') }}"></script>
+    <script src="{{ mix('/common_js/admin/admin.js') }}"></script>
+    @yield('script')
 </html>

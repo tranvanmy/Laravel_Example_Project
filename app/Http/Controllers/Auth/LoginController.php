@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -18,7 +20,7 @@ class LoginController extends Controller
     |
     */
 
-    // use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -41,5 +43,27 @@ class LoginController extends Controller
     public function login()
     {
         return view('/auth/login');
+    }
+
+    public function handleLogin(LoginRequest $request)
+    {
+        try {
+            $auth = [
+                'email' => $request->email,
+                'password' => $request->password,
+            ];
+
+            if (Auth::attempt($auth) && Auth::user()->role == config('setting.admin')) return response()->json([
+                'message' => 'Login success',
+            ], 200);
+
+            return response()->json([
+                'error' => trans('invalid_credentials'),
+                'message' => 'User not found',
+            ], 401);
+
+        } catch (Exception $e) {
+            \Log::error('error-login', $e);
+        }
     }
 }
