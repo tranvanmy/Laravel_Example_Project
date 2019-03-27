@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin/modules/dashboard');
+Route::group(['prefix' => 'account'], function () {
+    Route::post('/register', 'Auth\LoginController@register')->name('register');
+    Route::get('/login', 'Auth\LoginController@login')->name('login');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
-	Route::resource('/user', 'UserController');
+    Route::get('/', function () { return view('admin/modules/dashboard'); });
+    Route::resource('/user', 'UserController');
 });
