@@ -16,8 +16,10 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'account'], function () {
-    Route::post('/register', 'Auth\LoginController@register')->name('register');
     Route::get('/login', 'Auth\LoginController@login')->name('login');
+    Route::post('/login-handle', 'Auth\LoginController@handleLogin')->name('login-handle');
+    
+    Route::post('/register', 'Auth\LoginController@register')->name('register');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 

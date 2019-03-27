@@ -15,7 +15,7 @@ class UpdateUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar')->nullable()->change();
-            $table->unsignedInteger('role')->nullable();
+            $table->unsignedInteger('role')->default(2);
         });
     }
 
